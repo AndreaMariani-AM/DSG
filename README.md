@@ -64,7 +64,7 @@ otherwise the smoothed signal is on a different scale than the original signal.
 - **EMG** is electromyogram and measures muscle movement from electrical signals starting from the brain. Can be helpful to measures when movements are initiated (onset). It's inherently noisy and some algo might have a hard time differentiating between noise and movement start.
 
 - **TKEO**: **Taeger-Kaiser enerthy-tracking operator** is a general denoising strategy.  
-$$\Large y_t = x^{2}_t - x_{t-1}x_{t+1}$$  
+$$\Large y_t = x^{2}_{t} - x_{t-1}x_{t+1}$$  
 Easy operator, square the signal at time point t and substract the product of the previous and subsequent signal. It suppresses then noise and augment the signal
 
 ## Median filter to remove spike noise
@@ -82,7 +82,7 @@ Easy operator, square the signal at time point t and substract the product of th
 - The $$\Large \beta_0$$ as the first term of the polynomial $$\Large \beta_0 + \beta_1 x + \beta_2 x^2 + ... + \beta_n x^n$$ it a general mena offset.
 
 - To find the order of the polynomial that best matches the TS, i can use `BIC` (Bayes information criterion). The calculate the residuals and denoise the signal from the nth order polynomial trend. `BIC` is a way to evaluate a fit of a model to a dataset, evaluate different models with different parameters and then pick the one with the lowest `BIC`.  
-$$\Large b = n \space ln(\epsilon) = k \space ln(n)$$
+$$\Large b = n \space ln(\epsilon) = k \space ln(n)$$  
 $$\Large \epsilon = n^{-1} \sum_{i=1}^{n} (\hat y_i - y_i)^2$$  
 The secondon term in the `BIC` accounts for all the free parameters tha you have in the model (in this case these are the `orders` of the polynomial). This portion offsets the `BIC` to avoid that models with a higher number of parameters fit the data better even if they are not better models.
 
@@ -99,7 +99,7 @@ The secondon term in the `BIC` accounts for all the free parameters tha you have
 - Removes an artifact from a timeseries based on some structural identification of the artifact. It requires a data channel and some form of measuring the artifact (like and artifacat channel). Then by identifying some structures or patterns in the data channel that looks like the artifact channel, i can remove it.
 
 - In this case, i can use `Least-Square` procedure (aka regression models of GLMs) and find a statistical (linear??) mapping between the artifact channel and the data channel. Then i can remove the best "candidates artifact" by regressiing it out.  
-$$\Large \beta = (X^T X)^{-1} X^Ty$$
+$$\Large \beta = (X^T X)^{-1} X^Ty$$  
 $\Large \beta$ is a parameter vector (`regression weigths`) obtained from a regression model solving through least squares. $\Large \beta$ is the best fit or closest match between the artifact channel, a column in design matrix $\Large X$ and the data channel, vector $\Large y$. You can also think about $\Large X$ as the artifact pattern or artifact signal.  
 $$\Large r = y - X \beta$$  
 Then the residuals are what's left of the vector signal $\Large y$ when subtracted with the design matrix $\Large X$ scaled by $\Large \beta$. $\Large X \beta$ is the predicted data from the regression model, aka the component in the data vector $y$ best explained by the design matrix. 
