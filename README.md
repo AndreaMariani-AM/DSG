@@ -97,9 +97,15 @@ Easy operator, square the signal at time point t and substract the product of th
 
 - To find the order of the polynomial that best matches the TS, i can use `BIC` (Bayes information criterion). The calculate the residuals and denoise the signal from the nth order polynomial trend. `BIC` is a way to evaluate a fit of a model to a dataset, evaluate different models with different parameters and then pick the one with the lowest `BIC`.  
 _____________________
-$$\Large b = n \space ln(\epsilon) = k \space ln(n)$$  
-where  
-$$\Large \epsilon = n^{-1} \sum_{i=1}^{n} (\hat y_i - y_i)^2$$  
+$$
+\Large
+\left\{
+\begin{aligned}
+    & b = n \, \ln(\epsilon) = k \, \ln(n) \\
+    & \epsilon = n^{-1} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
+\end{aligned}
+\right.
+$$
 _____________________
 The secondon term in the `BIC` accounts for all the free parameters tha you have in the model (in this case these are the `orders` of the polynomial). This portion offsets the `BIC` to avoid that models with a higher number of parameters fit the data better even if they are not better models.
 
