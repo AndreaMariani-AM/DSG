@@ -25,7 +25,9 @@ Some tools:
 ## Smoothing Filter
 
 - Running-mean or mean-smoothing filter. Sets each data point in the smoothed version as the mean of `n` points in the surroundings. How much you go before and after (forward and backwards in time) is called **order** of the filter (`k`), crucial param. Works best when noise is *gaussian*, not applicable everywhere.  
+_____________________
 $$\Large y_t = (2k + 1)^{-1} \sum_{i=t-k}^{t+k} x_i$$
+_____________________
 
 - This filter is applied in the time domain (smoothed over x-coord). With convolution and spectral multiplication you can apply a smoothing filter in the frequency domain (y-coord??)
 
@@ -38,7 +40,9 @@ $$\Large y_t = (2k + 1)^{-1} \sum_{i=t-k}^{t+k} x_i$$
 ## Gaussian-smooth Filter
 
 - Derivation of mean-smoothing. Weigths `k` before and after by a **Gaussian Function** (but can be extended to other functions).  
+_____________________
 $$\Large y_t = \sum_{i=t-k}^{t+k} x_i g_i$$.  
+_____________________
 There's no normalization factor (denominator), because the **Gaussian** should be suitably normalized so that the sum of all data points in this **Gaussian** function is one (`g`). [*aka area under the function is one or total probability density of the function is one*].
 
 - Tends to be smoother than mean-smoothing filter.
@@ -64,7 +68,7 @@ otherwise the smoothed signal is on a different scale than the original signal.
 - **EMG** is electromyogram and measures muscle movement from electrical signals starting from the brain. Can be helpful to measures when movements are initiated (onset). It's inherently noisy and some algo might have a hard time differentiating between noise and movement start.
 
 - **TKEO**: **Taeger-Kaiser enerthy-tracking operator** is a general denoising strategy.  
-$$\Large y_t = x^{2}_{t} - x_{t-1}x_{t+1}$$  
+$$\Large y_t = x_{t}^{2} - x_{t-1}x_{t+1}$$  
 Easy operator, square the signal at time point t and substract the product of the previous and subsequent signal. It suppresses then noise and augment the signal
 
 ## Median filter to remove spike noise
