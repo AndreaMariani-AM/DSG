@@ -26,7 +26,7 @@ Some tools:
 
 - Running-mean or mean-smoothing filter. Sets each data point in the smoothed version as the mean of `n` points in the surroundings. How much you go before and after (forward and backwards in time) is called **order** of the filter (`k`), crucial param. Works best when noise is *gaussian*, not applicable everywhere.  
 _____________________
-$$\Large y_t = (2k + 1)^{-1} \sum_{i=t-k}^{t+k} x_i$$
+$$\Large y_t = (2k + 1)^{-1} \sum_{i=t-k}^{t+k} x_i$$  
 _____________________
 
 - This filter is applied in the time domain (smoothed over x-coord). With convolution and spectral multiplication you can apply a smoothing filter in the frequency domain (y-coord??)
@@ -41,16 +41,18 @@ _____________________
 
 - Derivation of mean-smoothing. Weigths `k` before and after by a **Gaussian Function** (but can be extended to other functions).  
 _____________________
-$$\Large y_t = \sum_{i=t-k}^{t+k} x_i g_i$$.  
+$$\Large y_t = \sum_{i=t-k}^{t+k} x_i g_i$$  
 _____________________
+
 There's no normalization factor (denominator), because the **Gaussian** should be suitably normalized so that the sum of all data points in this **Gaussian** function is one (`g`). [*aka area under the function is one or total probability density of the function is one*].
 
 - Tends to be smoother than mean-smoothing filter.
 
 - Formula to compute the Gaussian  
 _____________________
-$$\Large g = e^{\frac{-4 \ln(2)t^2}{w^2}}$$.  
+$$\Large g = e^{\frac{-4 \ln(2)t^2}{w^2}}$$  
 _____________________
+
 `t` is centered at 0 and the gaussian is 1 when `t=0`. `w` is **full-width at half maximum** aka the distance between two points when the gaussian is 1 forward and backwards w.r.t `t` [if you think about a gaussian, is one point on the left side of the curve and one on the right side when y-coord == 0.5, half the height of the gaussian]. Helps to think how much smoothing you want to apply (in ms usually).  
 
 - `k` should be sufficiently long so that the gaussian goes down to 0 (asymptotic) on both sides --> **correct fwhm identification**, but not to long so that it doesn't stretch to much --> **edge effects**. Strive for as small as i can while achieving the first condition.
@@ -59,6 +61,7 @@ _____________________
 _____________________
 $$\Large \frac{g}{sum(g)}$$  
 _____________________
+
 otherwise the smoothed signal is on a different scale than the original signal.
 
 - The decision between mean-smoothing and gaussian-smoothing filters is application specific. Both useful when noise around the signal is gaussian
@@ -75,6 +78,7 @@ otherwise the smoothed signal is on a different scale than the original signal.
 _____________________
 $$\Large y_t = x_{t}^{2} - x_{t-1}x_{t+1}$$  
 _____________________
+
 Easy operator, square the signal at time point t and substract the product of the previous and subsequent signal. It suppresses then noise and augment the signal
 
 ## Median filter to remove spike noise
@@ -94,6 +98,7 @@ Easy operator, square the signal at time point t and substract the product of th
 - To find the order of the polynomial that best matches the TS, i can use `BIC` (Bayes information criterion). The calculate the residuals and denoise the signal from the nth order polynomial trend. `BIC` is a way to evaluate a fit of a model to a dataset, evaluate different models with different parameters and then pick the one with the lowest `BIC`.  
 _____________________
 $$\Large b = n \space ln(\epsilon) = k \space ln(n)$$  
+where  
 $$\Large \epsilon = n^{-1} \sum_{i=1}^{n} (\hat y_i - y_i)^2$$  
 _____________________
 The secondon term in the `BIC` accounts for all the free parameters tha you have in the model (in this case these are the `orders` of the polynomial). This portion offsets the `BIC` to avoid that models with a higher number of parameters fit the data better even if they are not better models.
