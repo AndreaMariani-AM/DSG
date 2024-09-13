@@ -99,7 +99,7 @@ Easy operator, square the signal at time point t and substract the product of th
 _____________________
 $$
 \Large
-\left\{
+\left\
 \begin{aligned}
     & b = n \, \ln(\epsilon) = k \, \ln(n) \\
     & \epsilon = n^{-1} \sum_{i=1}^{n} (\hat{y}_i - y_i)^2
