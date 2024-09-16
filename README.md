@@ -20,7 +20,7 @@ Some tools:
 - SNR/RMS
 
 
-# [02_ts_denoising]()
+# [02_ts_denoising](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/02_ts_denoising.ipynb)
 
 ## Smoothing Filter
 
