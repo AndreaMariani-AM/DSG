@@ -115,7 +115,7 @@ The secondon term in the `BIC` accounts for all the free parameters tha you have
 
 - Removes an artifact from a timeseries based on some structural identification of the artifact. It requires a data channel and some form of measuring the artifact (like and artifacat channel). Then by identifying some structures or patterns in the data channel that looks like the artifact channel, i can remove it.
 
-- In this case, i can use `Least-Square` procedure (aka regression models of GLMs) and find a statistical (linear??) mapping between the artifact channel and the data channel. Then i can remove the best "candidates artifact" by regressiing it out.  
+- In this case, i can use `Least-Square` procedure (aka regression models or GLMs) and find a statistical mapping between the artifact channel and the data channel. Then i can remove the best "candidates artifact" by regressiing it out.  
 _____________________
 $$\Large \beta = (X^T X)^{-1} X^Ty$$  
 _____________________
