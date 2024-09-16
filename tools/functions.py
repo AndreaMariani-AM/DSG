@@ -5,7 +5,7 @@ from scipy import *
 import matplotlib.pyplot as plt
 import copy
 
-from typing import Iterable, Tuple, Any, Dict
+from typing import Iterable
 
 
 def mean_smoothing(k: int, time: int, signal: Iterable[float]) -> Iterable[int]:
@@ -13,12 +13,12 @@ def mean_smoothing(k: int, time: int, signal: Iterable[float]) -> Iterable[int]:
       Applies the mean smoothing procedure
 
       Args:
-          k: number of time points to consider before and after 
-          time: time domain of the time serie
-		  signal: array of singal to denoise
+        k: number of time points to consider before and after 
+        time: time domain of the time serie
+        signal: array of singal to denoise
 
       Returns:
-          An Array 
+        An Array 
       """
 	# allocate filtSig
 	filtSig = np.zeros(time)
