@@ -23,8 +23,14 @@ def mean_smoothing(k: int, time: int, signal: Iterable[float]) -> Iterable[int]:
 	# allocate filtSig
 	filtSig = np.zeros(time)
 	
-	for i  in range(k, time-k):
-		filtSig[i] = np.mean(signal[i-k:i+k+1])
+    # Compute upper and loweer bound
+	
+	#for i  in range(k, time-k):
+	for i in range(0,time):
+		up_bound = np.min((time, i+k+1))
+		low_bound = np.max((0, i-k))
+		#filtSig[i] = np.mean(signal[i-k:i+k+1])
+		filtSig[i] = np.mean(signal[low_bound:up_bound])
 
 	return filtSig
 
@@ -91,7 +97,7 @@ def TKEO_denoising(signal: Iterable[float]) -> Iterable[float]:
 	return filtSignal
 
 def median_filter(threshold: int, signal: Iterable[float],
-				  k: int) -> Iterable[float]:
+				  k: int, direction: str = "positive") -> Iterable[float]:
 	"""
       Applies median filter to random spikes in the signal
 
@@ -104,7 +110,10 @@ def median_filter(threshold: int, signal: Iterable[float],
         Smoothed signal with spikes removed
     """
 	filtSignal = np.copy(signal)
-	thresh_over = np.where(filtSignal > threshold)[0]
+	if direction == "positive":
+		thresh_over = np.where(filtSignal > threshold)[0]
+	else:
+		thresh_over = np.where(filtSignal < threshold)[0]
 
 	for i in range(len(thresh_over)):
 		# set lower and upperbound
