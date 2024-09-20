@@ -48,3 +48,11 @@ When you do the FT, the frequencies that you get back from the signal, are betwe
     3) average the power spectra together over all epochs.
 
 - If features of the signal do not change over time both methods give you similar results. If the features change or the noise change, then the welch method should give you a better S/N. 
+
+- One important thing to consider when applying the `Welch's method` is that the frequency resolution of each power spectrum is given by the number of data points, and with each windowd it's drastically reduced. Moreover, each time i'm cutting up the signal, the `FT` will introduce some edge effects because it captures the shard decrease from the value of the signal to 0. For this reason, we can apply and "smoothing" procedure (`Hann window`) to taper off gently the edges and avoid a point the in the power spectrum with very small frequency (left most side of the plot usually). Now, this means pratically throwing away some data at the edges and therefore having **ovelapping** windows helps recover this signal in the next/previous window.
+
+## Time Frequency Analysis
+
+- It's an alternative to the `Welch's method` when there are changes in the spectral properties  over time that you are interested in. Welch's average those together and therefore it's not suitable.
+
+- More info on the Wavelets section
