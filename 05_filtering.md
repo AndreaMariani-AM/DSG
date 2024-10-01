@@ -96,3 +96,30 @@ _____________________
 where $\large t$ is any kind of factor, usually time. $\large f$ is the frequency and allows you to specify the frequency in for the sine wave (`in Hz if t in in seconds`). In practice, one time point is trick and it's when $\large t = 0$, se we need to `interpolate` it. 
 
 - A `windowed-sinc filter` is used because there'll be edge effects at the begging and end of the kernel, and some tapering/windowing can be applied. Different forms of windowin: `gaussian`, `hann`, `blackman`, `kaiser`
+
+## Narrow-band filter
+
+- Use simmetric transition zones as much as possible as they can create awful kernels otherrwise.
+
+## Two stage wide-band filter
+
+- Sometimes when creating bandpass filters, its hard to come up with a really good kernel for a given set of frequencies to keep. You can try and change parameters but sometimes this won't go far. A better approac would be to filter `twice` -->` two stage filter`. For example, if you want a band of 10-60 Hz, you can apply a high pass fiter at 10Hz and a low pass filter at 60Hz.
+
+- Dosen't really matter if the filter are applied separately in a two stage filter, they result will be the same as if i had a great bandpass.
+
+# Roll-off characteristics
+
+- One of the ways to describe the characteristics of a temporal filter is to quantify the `roll-off` of the filter, aka the decrease in amplitude with the increasing frequency. Basically quantify the decay in amplitude of filtered signal. E.g. when aplying a low pass filter, the roll-off in the decays in the amplitude after the cutoff at high frequency (in the power spectrum). higher roll off =  higher attenuation of the signal.
+
+- The roll-off is quantified as the slope of the decay signal in the power spectrum and it's given by
+_____________________
+$$\large RL = \frac{g_{2f} \space - g_{-3}}{Hz_{sf} \space - Hz_f}$$
+_____________________
+
+1) You start with a prespecified cutoff frequency (which is the frequency chosen for the filter).
+2) Convert the power spectrum to decibel (gain in decibel).
+3) Find the frequency that has $\large -3$ decibels attenuation ($\large f_{-3}$). Based on the order of the filter it could be either before or after the cutoff.
+4) Double that quantity to get the change in frequency and these two last points go to the denominator.
+5) in the denominator, the last term will always be the Gain -3 (or as close as possible), and the first term is the gain in decibels (also negative) at double the frequency of the frequency at -3.
+
+- The `roll-off` of a filter isn't the only important characteristic of a filter
