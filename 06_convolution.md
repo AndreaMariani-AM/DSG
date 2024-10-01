@@ -23,3 +23,9 @@ between the two time series.
 - An interesting property of convolution is that the length of the output is greater than the original two time series, in generale is the length of the signal and kernel summed, minus one.
 
 - Lastly, the convolution kernel is actually `flipped backwards` when perfomring convolution. More in this later
+
+## Flipped Kernel
+
+- As said before, when doing convolution you take your kernel, flip it backwards and them do a sliding dot-product over the signal.
+
+- If you don't flip it backwards you are doing `cross-correlation`. Technically in the time domain, you could avoid flipping the kernel and do the convolution with cross-correlation
