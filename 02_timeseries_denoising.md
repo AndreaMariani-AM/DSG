@@ -44,6 +44,7 @@ otherwise the smoothed signal is on a different scale than the original signal.
 
 - The decision between mean-smoothing and gaussian-smoothing filters is application specific. Both useful when noise around the signal is gaussian
 
+- You'll see later that, thanks to **convolution theorem**, using `convolution` with a gaussian kernel is a better approach that this mean-smoothing approach.
 ## Gaussian-smooth a spike time series
 
 - This is basically just convolving a spike time series with a gaussian window, aka smoothing out the spikes.
