@@ -1,4 +1,4 @@
-# [06_convolution_notebook]()
+# [06_convolution_notebook](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/06_convolution.ipynb)
 
 ## Time-Domain Convolution
 
