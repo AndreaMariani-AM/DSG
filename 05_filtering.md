@@ -1,4 +1,4 @@
-# [05_filtering_notebook]()
+# [05_filtering_notebook](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/05_filtering.ipynb)
 
 ## Intuition, Goals and Types
 
