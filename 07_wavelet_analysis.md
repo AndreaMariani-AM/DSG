@@ -1,4 +1,4 @@
-# [07_wavelet_analysis]()
+# [07_wavelet_analysis](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/07_wavelet_analysis.ipynb)
 
 ## Wavelets
 
