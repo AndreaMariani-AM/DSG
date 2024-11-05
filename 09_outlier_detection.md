@@ -1,4 +1,4 @@
-[09_outlier_detection](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/09_outlier_detection.ipynb)
+# [09_outlier_detection](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/09_outlier_detection.ipynb)
 
 ## Outlier detection via std threshold
 
