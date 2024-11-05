@@ -1,4 +1,4 @@
-# [08_resampling]()
+# [08_resampling](https://github.com/AndreaMariani-AM/DSG/blob/main/notebooks/08_resampling.ipynb)
 
 ## Upsampling
 
