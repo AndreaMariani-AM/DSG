@@ -51,9 +51,9 @@
 
  - `IIR` filters are set up similarly to `fir1 filters` where you don't need to specify transition zones. They are never going to be better than FIR filters, at best very similar, but are faster
 
- - `IIR` filter are evaluated differently compared to `FIR`. Basically you use them and soo how they look in pratica with `impulse response`. You look at the response of an impulse to the filter. 
+ - `IIR` filter are evaluated differently compared to `FIR`. Basically you use them and see how they look in pratice with `impulse response`. You look at the response of an impulse to the filter. 
 
- - An `impulse` is a time series of all zeros with one right in the middle of the series
+ - An `impulse` is a time series of all zeros with one one right in the middle of the series
 
  - `IIR` when designed, give back two sets of coefficients. This is because the filtered signal is the weigthed sum of previous points in the original signal and the weigthed sum of the previous points in the filtered signal. `Coeffs B` are the weights of the previous values in the original signal and the `coeffs A` are thw weigths of the previous values of the alredy filtered signal. They are not even in the same scale.
 
